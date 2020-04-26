@@ -7,6 +7,15 @@
     "axios": "^0.19.2",
     "chalk": "^4.0.0"
   },
+  "keywords": [
+    "typescript",
+    "cli",
+    "package manager",
+    "types",
+    "typescript package manager",
+    "yarn",
+    "npm"
+  ],
   "bin": {
     "typm": "./index.js"
   },
