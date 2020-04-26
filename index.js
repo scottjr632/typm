@@ -15,6 +15,17 @@ const installCmds = [
   'i', 'install', 'add'
 ]
 
+const flagRegex = /( -[^\s]+)/gm
+
+function findAllFlags(input) {
+  const matches = [...` ${input}`.matchAll(flagRegex)]
+  return matches.map(match => match[1].replace(' ', ''))
+}
+
+function replaceAllFlags(input) {
+  return ` ${input}`.replace(flagRegex, '')
+}
+
 if (args[0] === 'init' || args[0] === 'initialize') {
   initialize();
 } else if (!installCmds.includes(args[0])) {
@@ -23,8 +34,11 @@ if (args[0] === 'init' || args[0] === 'initialize') {
   process.exit(0);
 } else {
   const config = loadConfig();
-  const packages = args.slice(1);
-  execSync(`${config.prod} ${packages.join(' ')}`, { stdio: 'inherit' });
+  const cmds = args.slice(1).join(' ');
+  const flags = findAllFlags(cmds);
+  const packages = replaceAllFlags(cmds);
+
+  execSync(`${config.prod} ${flags.join(' ')} ${packages}`, { stdio: 'inherit' });
   
-  installTypedPackages(config, packages);
+  installTypedPackages(config, packages.split(' ').filter(package => package.length > 0));
 }
