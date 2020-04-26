@@ -1,4 +1,4 @@
-# [TYPM - Typescript Package Management](https://github.com/scottjr632/typm)
+# [TYPM - Typescript Package Management 🗄](https://github.com/scottjr632/typm)
 
 
 [![NPM version](http://img.shields.io/npm/v/typm.svg)](https://www.npmjs.com/package/typm)
