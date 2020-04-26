@@ -51,4 +51,6 @@ react-dom                 | React package for…   | =acdlite…       | 2020-03
 
 ## Issues or Feature requests
 Create a new feature or report issue [here](https://github.com/scottjr632/graph-covid-19/issues/new/choose)
+
+
 Pull requests are also welcome!
