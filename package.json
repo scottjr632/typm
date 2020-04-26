@@ -1,0 +1,15 @@
+{
+  "name": "typm",
+  "version": "1.0.0",
+  "description": "Always install types for all your packages",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0"
+  },
+  "bin": {
+    "typm": "./index.js"
+  },
+  "author": "Scott Richardson <scottjr632@gmail.com>",
+  "license": "MIT"
+}
