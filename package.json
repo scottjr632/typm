@@ -11,5 +11,9 @@
     "typm": "./index.js"
   },
   "author": "Scott Richardson <scottjr632@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scottjr632/typm/issues"
+  },
+  "homepage": "https://github.com/scottjr632/typm#readme"
 }
