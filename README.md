@@ -48,3 +48,7 @@ NAME                      | DESCRIPTION          | AUTHOR          | DATE       
 react                     | React is a…          | =acdlite…       | 2020-03-19 | 16.13.1  | react
 react-dom                 | React package for…   | =acdlite…       | 2020-03-19 | 16.13.1  | react
 ```
+
+## Issues or Feature requests
+Create a new feature or report issue [here](https://github.com/scottjr632/graph-covid-19/issues/new/choose)
+Pull requests are also welcome!
