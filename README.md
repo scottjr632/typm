@@ -1,4 +1,8 @@
-# TYPM - Typescript Package Management
+# [TYPM - Typescript Package Management](https://github.com/scottjr632/typm)
+
+
+[![NPM version](http://img.shields.io/npm/v/typm.svg)](https://www.npmjs.com/package/typm)
+[![NPM downloads](http://img.shields.io/npm/dm/typm.svg)](https://www.npmjs.com/package/typm)
 
 Install types for each package that you install. Works with `npm` and `yarn`.  
 Having to run `npm i --save-dev @types/react` or `yarn add -D @types/react` can get old. Especially when starting a new project with typescript. TYPM allows you to just run `typm add {package name}` to install the package but also the type packages.
@@ -7,7 +11,7 @@ Having to run `npm i --save-dev @types/react` or `yarn add -D @types/react` can 
 
 ### Installing
 ```bash
-$ npm i -g typm
+$ npm -g i typm
 ```
 
 ### Initialize typm
