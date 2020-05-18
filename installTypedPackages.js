@@ -16,8 +16,9 @@ async function installTypedPackages(config, packages) {
     }
   }))
 
-  if (typedPackages.length > 0) {
-    execSync(`${config.dev} ${typedPackages.filter(Boolean).join(' ')}`, { stdio: 'inherit' })
+  const filteredTypePackages = typedPackages.filter(Boolean)
+  if (filteredTypePackages.length > 0) {
+    execSync(`${config.dev} ${filteredTypePackages.join(' ')}`, { stdio: 'inherit' })
   } else {
     console.info('No type packages found!')
   }
