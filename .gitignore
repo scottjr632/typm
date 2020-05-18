@@ -1,2 +1,5 @@
 node_modules
 .typm.json
+lib
+.eslintcache
+.vscode
