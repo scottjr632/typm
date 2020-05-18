@@ -4,6 +4,7 @@ const execSync = require('child_process').execSync;
 
 const chalk = require('chalk');
 
+var package = require('./package.json');
 const { loadConfig, initialize } = require('./config');
 const installTypedPackages = require('./installTypedPackages');
 
@@ -13,6 +14,14 @@ console.info(welcomeMessage)
 
 const installCmds = [
   'i', 'install', 'add'
+]
+
+const versionCmds = [
+  '-v', '--version'
+]
+
+const helpCmds = [
+  '-h', '--help'
 ]
 
 const flagRegex = /( -[^\s]+)/gm
@@ -26,19 +35,34 @@ function replaceAllFlags(input) {
   return ` ${input}`.replace(flagRegex, '')
 }
 
-if (args[0] === 'init' || args[0] === 'initialize') {
-  initialize();
-} else if (!installCmds.includes(args[0])) {
-  const config = loadConfig();
-  execSync(`${config.manager} ${args.join(' ')}`, { stdio: 'inherit' });
-  process.exit(0);
-} else {
-  const config = loadConfig();
-  const cmds = args.slice(1).join(' ');
-  const flags = findAllFlags(cmds);
-  const packages = replaceAllFlags(cmds);
-
-  execSync(`${config.prod} ${flags.join(' ')} ${packages}`, { stdio: 'inherit' });
+async function bootstrap() {
+  if (args[0] === 'init' || args[0] === 'initialize') {
+    initialize();
+  } else if (versionCmds.includes(args[0])) {
+    const config = loadConfig();
   
-  installTypedPackages(config, packages.split(' ').filter(package => package.length > 0));
+    console.info(`TYPM version: ${package.version}`)
+  
+    const managerVersion = execSync(`${config.manager} ${args.join(' ')}`)
+    console.info(`${config.manager.toUpperCase()} version: ${managerVersion}`)
+  } else if (helpCmds.includes(args[0])) {
+    console.info(`usage: ${package.name} ${installCmds.join('|')} [package name(s)]`)
+    console.info(`example: typm add react react-router-dom typescript`)
+  } else if (!installCmds.includes(args[0])) {
+    const config = loadConfig();
+  
+    execSync(`${config.manager} ${args.join(' ')}`, { stdio: 'inherit' });
+  } else {
+    const config = loadConfig();
+    const cmds = args.slice(1).join(' ');
+    const flags = findAllFlags(cmds);
+    const packages = replaceAllFlags(cmds);
+  
+    execSync(`${config.prod} ${flags.join(' ')} ${packages}`, { stdio: 'inherit' });
+    
+    await installTypedPackages(config, packages.split(' ').filter(package => package.length > 0));
+  }
+  process.exit(0)
 }
+
+bootstrap()
