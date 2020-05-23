@@ -37,7 +37,7 @@ function replaceAllFlags(input) {
 
 async function bootstrap() {
   if (args[0] === 'init' || args[0] === 'initialize') {
-    initialize();
+    await initialize();
   } else if (versionCmds.includes(args[0])) {
     const config = loadConfig();
   
