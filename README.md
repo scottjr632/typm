@@ -70,7 +70,7 @@ react-dom                 | React package for…   | =acdlite…       | 2020-03
 ```
 
 ## Issues or Feature requests
-Request a new feature or report issue [here](https://github.com/scottjr632/typm/issues/new/choose)
+Request a new feature or report issues [here](https://github.com/scottjr632/typm/issues/new/choose)
 
 
 Pull requests are also welcome!
