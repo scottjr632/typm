@@ -3,8 +3,8 @@ const chalk = require('chalk');
 const execSync = require('child_process').execSync;
 
 const rl = require("readline").createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
 const CONFIG_FILE_NAME = '.typm.json'
@@ -23,11 +23,11 @@ function getCommands(packageManager) {
         dev: 'yarn add -D'
       }
     case 'npm':
-     return {
-       manager: 'npm',
-       prod: 'npm install',
-       dev: 'npm install --save-dev'
-     } 
+      return {
+        manager: 'npm',
+        prod: 'npm install',
+        dev: 'npm install --save-dev'
+      }
     default:
       return {
         manager: 'yarn',
@@ -38,7 +38,7 @@ function getCommands(packageManager) {
 }
 
 exports.initialize = async () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const re = /^(yarn|npm)$/
     rl.question(`Specify which package manager to use (${potentialPkgManagers.join('|')}) [${potentialPkgManagers[0]}]: `, packageManager => {
       if (packageManager === '') {
@@ -47,14 +47,13 @@ exports.initialize = async () => {
         console.error(`${chalk.red('Error:')} package manager must be ${potentialPkgManagers.join(' or ')}`);
         process.exit(1);
       }
-  
+
       fs.writeFileSync(CONFIG_FILE_NAME, JSON.stringify({ packageManager }, null, '\t'));
       fs.appendFileSync('.gitignore', `\n${CONFIG_FILE_NAME}\n`)
       console.info(`${chalk.green('Success:')} configuration file has been saved for typm\n\n`);
-  
+
       execSync(`${packageManager} init`, { stdio: 'inherit' });
       resolve()
-      // process.exit(0);
     })
   })
 }

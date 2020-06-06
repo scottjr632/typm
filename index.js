@@ -6,7 +6,7 @@ const chalk = require('chalk');
 
 var package = require('./package.json');
 const { loadConfig, initialize } = require('./config');
-const installTypedPackages = require('./installTypedPackages');
+const { installTypedPackages, getAvailableTypedPackages } = require('./installTypedPackages');
 
 const args = process.argv.slice((2))
 const welcomeMessage = chalk.white.bold('Thanks for using typm!\n')
@@ -40,9 +40,9 @@ async function bootstrap() {
     await initialize();
   } else if (versionCmds.includes(args[0])) {
     const config = loadConfig();
-  
+
     console.info(`TYPM version: ${package.version}`)
-  
+
     const managerVersion = execSync(`${config.manager} ${args.join(' ')}`)
     console.info(`${config.manager.toUpperCase()} version: ${managerVersion}`)
   } else if (helpCmds.includes(args[0])) {
@@ -50,17 +50,18 @@ async function bootstrap() {
     console.info(`example: typm add react react-router-dom typescript`)
   } else if (!installCmds.includes(args[0])) {
     const config = loadConfig();
-  
+
     execSync(`${config.manager} ${args.join(' ')}`, { stdio: 'inherit' });
   } else {
     const config = loadConfig();
     const cmds = args.slice(1).join(' ');
     const flags = findAllFlags(cmds);
     const packages = replaceAllFlags(cmds);
-  
+
+    const typedPackages = getAvailableTypedPackages(packages.split(' ').filter(package => package.length > 0))
     execSync(`${config.prod} ${flags.join(' ')} ${packages}`, { stdio: 'inherit' });
-    
-    await installTypedPackages(config, packages.split(' ').filter(package => package.length > 0));
+
+    await installTypedPackages(config, typedPackages);
   }
   process.exit(0)
 }
