@@ -1,0 +1,71 @@
+{
+  "name": "typm",
+  "description": "Typescript Package Manager",
+  "version": "0.0.1",
+  "author": "Scott Richardson <scottjr632@gmail.com>",
+  "bin": {
+    "typm": "./bin/run"
+  },
+  "bugs": "https://github.com/scottjr632/typm/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^3",
+    "axios": "^0.19.2",
+    "inquirer": "^7.1.0",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "@types/axios": "^0.14.0",
+    "@types/chai": "^4",
+    "@types/inquirer": "^6.5.0",
+    "@types/mocha": "^5",
+    "@types/mock-fs": "^4.10.0",
+    "chai": "^4",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "fancy-test": "^1.4.8",
+    "globby": "^10",
+    "mocha": "^5",
+    "mock-fs": "^4.12.0",
+    "nock": "^12.0.3",
+    "nyc": "^15.1.0",
+    "sinon": "^9.0.2",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/scottjr632/typm",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "typm",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "scottjr632/typm",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts"
+}
