@@ -6,8 +6,8 @@ import { prompt } from 'inquirer';
 
 import { packageManager, globalFileName, localFileName } from '../helpers/config';
 
-export default class IndexCommand extends Command {
-  static description = 'describe the command here'
+export default class Initialize extends Command {
+  static description = 'initialize typm with your package manager'
 
   static aliases = ['initialize']
 
@@ -18,7 +18,7 @@ export default class IndexCommand extends Command {
 
   async run() {
     let toWrite: string;
-    const { flags } = this.parse(IndexCommand);
+    const { flags } = this.parse(Initialize);
     const responses = await prompt([{
       name: 'manager',
       message: 'select package manager',

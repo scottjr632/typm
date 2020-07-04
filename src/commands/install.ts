@@ -4,7 +4,7 @@ import Config from '../helpers/config';
 
 import { getAvailableTypedPackages, installPackages } from '../helpers/packages';
 
-export default class Hello extends Config {
+export default class Install extends Config {
   static description = 'install npm package[s]'
 
   static strict = false
@@ -20,7 +20,7 @@ export default class Hello extends Config {
   }
 
   async run() {
-    const { argv } = this.parse(Hello);
+    const { argv } = this.parse(Install);
     const typedPackages = getAvailableTypedPackages(argv);
 
     installPackages(this.commands.prod, argv);
