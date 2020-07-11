@@ -5,8 +5,6 @@ Typescript Package Manager 🗄
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/typm.svg)](https://npmjs.org/package/typm)
-[![CircleCI](https://circleci.com/gh/scottjr632/typm/tree/master.svg?style=shield)](https://circleci.com/gh/scottjr632/typm/tree/master)
-[![Codecov](https://codecov.io/gh/scottjr632/typm/branch/master/graph/badge.svg)](https://codecov.io/gh/scottjr632/typm)
 [![Downloads/week](https://img.shields.io/npm/dw/typm.svg)](https://npmjs.org/package/typm)
 [![License](https://img.shields.io/npm/l/typm.svg)](https://github.com/scottjr632/typm/blob/master/package.json)
 
@@ -18,6 +16,8 @@ Typescript Package Manager 🗄
 <!-- usage -->
 ```sh-session
 $ npm install -g typm
+$ # or
+$ npx typm [COMMAND]
 $ typm COMMAND
 running command...
 $ typm (-v|--version|version)
