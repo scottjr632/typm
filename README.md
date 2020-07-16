@@ -7,9 +7,23 @@
 [![License](https://img.shields.io/npm/l/typm.svg)](https://github.com/scottjr632/typm/blob/master/package.json)
 
 <!-- toc -->
+* [About](#about)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+# About
+<!-- about -->
+Typescript Package Manager automatically checks if a type package exists for a specific package and installs it as a development dependency. That means that instead of running
+```bash
+$ yarn add react
+$ yarn add -D @types/react
+```
+you would only have to run
+```bash
+$ typm add react
+```
+This also means that you don't have to check if a type packages exists for a specific package. TYPM automatically checks this and only install the type packages that are necessary.
+<!-- aboutstop -->
 # Usage
 <!-- usage -->
 ```sh-session
