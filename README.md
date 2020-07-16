@@ -1,4 +1,4 @@
-TYPM - Typescript Package Manager 🗄
+[TYPM - Typescript Package Manager 🗄](https://github.com/scottjr632/typm)
 ====
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
