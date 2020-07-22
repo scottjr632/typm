@@ -3,7 +3,6 @@
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/typm.svg)](https://npmjs.org/package/typm)
-[![Downloads/week](https://img.shields.io/npm/dw/typm.svg)](https://npmjs.org/package/typm)
 [![License](https://img.shields.io/npm/l/typm.svg)](https://github.com/scottjr632/typm/blob/master/package.json)
 
 <!-- toc -->
