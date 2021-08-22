@@ -3,12 +3,31 @@ name: Run tests
 on: [push]
 
 jobs:
+  test-with-yarn:
+    name: Test with Yarn
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 13.x, 14.x]
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: yarn
+      - run: yarn test
+
   test-with-npm:
     name: Test with NPM
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 13.x]
+        node-version: [10.x, 12.x, 13.x, 14.x]
 
     steps:
       - name: Git checkout
@@ -22,21 +41,3 @@ jobs:
       - run: npm install
       - run: npm run test
 
-  test-with-yarn:
-    name: Test with Yarn
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 13.x]
-
-    steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - run: yarn
-      - run: yarn test
