@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { existsSync, readFileSync } from 'fs';
 
+import { prompt } from 'inquirer';
 import { Command } from '@oclif/command';
 
 export const packageManager = ['yarn', 'npm'] as const;
@@ -81,11 +82,20 @@ export default abstract class extends Command {
   }
 
   async init() {
-    const packageManager = this.getPackageManager();
-    if (!packageManager) {
-      this.error(`Invalid package manager found ${packageManager}`);
+    let foundPackageManager = this.getPackageManager();
+    if (!foundPackageManager) {
+      const responses = await prompt([{
+        name: 'manager',
+        message: 'select package manager',
+        type: 'list',
+        choices: packageManager.map(manager => ({ name: manager })),
+      }]);
+      if (!isPossiblePackageManager(responses.manager))
+        this.error('Invalid package manager!');
+
+      foundPackageManager = responses.manager;
     }
 
-    this.commands = getCommands(packageManager);
+    this.commands = getCommands(foundPackageManager);
   }
 }
