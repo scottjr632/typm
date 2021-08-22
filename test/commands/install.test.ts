@@ -30,7 +30,7 @@ describe('The config', () => {
       removeLocalMockedLockFiles();
       removeLocalMockedConfigFile();
     })
-    .it('displays the current package manager for npm from local config', ctx => {
+    .it('displays the current package manager for npm from local config instead of lock', ctx => {
       expect(ctx.stdout).to.contain('npm');
     });
 
