@@ -59,7 +59,7 @@ export default abstract class extends Command {
 
   private checkForConfig(): PossiblePackageManagers | null {
     const { configDir } = this.config;
-    for (const possiblePath in [localFileName, path.join(configDir, globalFileName)]) {
+    for (const possiblePath of [localFileName, path.join(configDir, globalFileName)]) {
       if (existsSync(possiblePath)) {
         const { packageManager } = JSON.parse(readFileSync(possiblePath).toString());
         if (!isPossiblePackageManager(packageManager))

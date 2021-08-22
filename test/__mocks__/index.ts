@@ -7,6 +7,26 @@ interface Config {
 const name = '.typm.json';
 const localBak = `${name}.bak`;
 
+export function removeLocalLockFile() {
+    if (existsSync('yarn.lock')) {
+        renameSync('yarn.lock', 'yarn.lock.bak');
+    }
+
+    if (existsSync('package-lock.json')) {
+        renameSync('package-lock.json', 'package-lock.json.bak');
+    }
+}
+
+export function removeLocalMockedLockFiles() {
+    if (existsSync('yarn.lock.bak')) {
+        renameSync('yarn.lock.bak', 'yarn.lock');
+    }
+
+    if (existsSync('package-lock.json.bak')) {
+        renameSync('package-lock.json.bak', 'package-lock.json');
+    }
+}
+
 export function makeLocalConfigFile(config: Config) {
     if (existsSync(name)) {
         renameSync(name, `${name}.bak`);
