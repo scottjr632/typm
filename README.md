@@ -32,7 +32,7 @@ $ npx typm [COMMAND]
 $ typm COMMAND
 running command...
 $ typm (-v|--version|version)
-typm/1.1.0 darwin-x64 node-v13.8.0
+typm/1.2.0 darwin-x64 node-v13.8.0
 $ typm --help [COMMAND]
 USAGE
   $ typm COMMAND
