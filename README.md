@@ -27,12 +27,10 @@ This also means that you don't have to check if a type packages exists for a spe
 <!-- usage -->
 ```sh-session
 $ npm install -g typm
-$ # or
-$ npx typm [COMMAND]
 $ typm COMMAND
 running command...
 $ typm (-v|--version|version)
-typm/1.2.0 darwin-x64 node-v13.8.0
+typm/1.2.0 darwin-x64 node-v12.18.2
 $ typm --help [COMMAND]
 USAGE
   $ typm COMMAND
@@ -55,7 +53,7 @@ USAGE
   $ typm config
 ```
 
-_See code: [src/commands/config.ts](https://github.com/scottjr632/typm/blob/v1.1.0/src/commands/config.ts)_
+_See code: [src/commands/config.ts](https://github.com/scottjr632/typm/blob/v1.2.0/src/commands/config.ts)_
 
 ## `typm help [COMMAND]`
 
@@ -90,7 +88,7 @@ ALIASES
   $ typm initialize
 ```
 
-_See code: [src/commands/init.ts](https://github.com/scottjr632/typm/blob/v1.1.0/src/commands/init.ts)_
+_See code: [src/commands/init.ts](https://github.com/scottjr632/typm/blob/v1.2.0/src/commands/init.ts)_
 
 ## `typm install`
 
@@ -111,5 +109,5 @@ EXAMPLE
   $ typm add react react-dom
 ```
 
-_See code: [src/commands/install.ts](https://github.com/scottjr632/typm/blob/v1.1.0/src/commands/install.ts)_
+_See code: [src/commands/install.ts](https://github.com/scottjr632/typm/blob/v1.2.0/src/commands/install.ts)_
 <!-- commandsstop -->
