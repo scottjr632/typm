@@ -1,7 +1,7 @@
 {
   "name": "typm",
   "description": "Typescript Package Manager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Scott Richardson <scottjr632@gmail.com>",
   "bin": {
     "typm": "./bin/run"
