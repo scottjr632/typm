@@ -29,7 +29,7 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 13.x]
 
-   steps:
+    steps:
       - name: Git checkout
         uses: actions/checkout@v2
 
